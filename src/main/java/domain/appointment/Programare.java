@@ -38,6 +38,7 @@ public class Programare {
     @OneToOne(cascade = CascadeType.ALL)
     private FisaConsultatie fisaConsultatie;
 
+    // Constructori, Getteri și Setteri
 
     public Programare(Long id, TipServiciu tipServiciu, LocalDate data, LocalTime oraIncepere, LocalTime oraSfarsit, String sala, String detalii, StareProgramare stareProgramare, Medic medic, Pacient pacient, FisaConsultatie fisaConsultatie) {
         this.id = id;
@@ -55,6 +56,8 @@ public class Programare {
 
     public Programare() {
     }
+
+    // Getteri și Setteri
 
     public Long getId() {
         return id;

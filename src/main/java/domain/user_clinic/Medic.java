@@ -14,6 +14,12 @@ public class Medic {
     private int nivelExperienta;
     private String birou;
 
+    // Legăm medicul de utilizator pentru a accesa numele, emailul, etc.
+    @OneToOne
+    @JoinColumn(name = "utilizator_id")
+    private Utilizator utilizator;
+
+
     @ManyToOne
     @JoinColumn(name = "clinica_id")
     private Clinica clinica;
@@ -23,6 +29,14 @@ public class Medic {
 
     @OneToOne(cascade = CascadeType.ALL)
     private ProgramDeLucru programDeLucru;
+
+    public Utilizator getUtilizator() {
+        return utilizator;
+    }
+
+    public void setUtilizator(Utilizator utilizator) {
+        this.utilizator = utilizator;
+    }
 
     public Medic(Long id, String specializare, int nivelExperienta, String birou, Clinica clinica, List<Programare> programari, ProgramDeLucru programDeLucru) {
         this.id = id;

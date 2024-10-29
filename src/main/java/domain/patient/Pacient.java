@@ -1,4 +1,5 @@
 package domain.patient;
+
 import domain.appointment.Programare;
 import domain.common.Status;
 import domain.user_clinic.Proprietar;
@@ -23,6 +24,9 @@ public class Pacient {
     private boolean sterilizat;
     private boolean microcip;
 
+    // Data de înregistrare a pacientului în clinică
+    private LocalDate dataInregistrare;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -36,8 +40,9 @@ public class Pacient {
     @JoinColumn(name = "proprietar_id", referencedColumnName = "id")
     private Proprietar proprietar;
 
+    // Constructori
 
-    public Pacient(Long id, String nume, String specie, String rasa, String sex, int varsta, double greutate, LocalDate dataNasterii, boolean sterilizat, boolean microcip, Status status, IstoricMedical istoricMedical, List<Programare> programari) {
+    public Pacient(Long id, String nume, String specie, String rasa, String sex, int varsta, double greutate, LocalDate dataNasterii, boolean sterilizat, boolean microcip, LocalDate dataInregistrare, Status status, IstoricMedical istoricMedical, List<Programare> programari) {
         this.id = id;
         this.nume = nume;
         this.specie = specie;
@@ -48,6 +53,7 @@ public class Pacient {
         this.dataNasterii = dataNasterii;
         this.sterilizat = sterilizat;
         this.microcip = microcip;
+        this.dataInregistrare = dataInregistrare;
         this.status = status;
         this.istoricMedical = istoricMedical;
         this.programari = programari;
@@ -55,6 +61,8 @@ public class Pacient {
 
     public Pacient() {
     }
+
+    // Getteri și Setteri
 
     public Long getId() {
         return id;
@@ -136,6 +144,14 @@ public class Pacient {
         this.microcip = microcip;
     }
 
+    public LocalDate getDataInregistrare() {
+        return dataInregistrare;
+    }
+
+    public void setDataInregistrare(LocalDate dataInregistrare) {
+        this.dataInregistrare = dataInregistrare;
+    }
+
     public Status getStatus() {
         return status;
     }
@@ -159,5 +175,12 @@ public class Pacient {
     public void setProgramari(List<Programare> programari) {
         this.programari = programari;
     }
-}
 
+    public Proprietar getProprietar() {
+        return proprietar;
+    }
+
+    public void setProprietar(Proprietar proprietar) {
+        this.proprietar = proprietar;
+    }
+}
